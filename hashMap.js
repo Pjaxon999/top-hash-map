@@ -119,4 +119,9 @@ export default class HashMap {
         this.size--;
         return true; 
     }
+
+    // returns the number of stored keys in the hash map
+    length() {
+        return this.size;
+    }
 }
