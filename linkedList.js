@@ -127,6 +127,20 @@ export default class LinkedList {
         return string += ` null `;
     }
 
+    // find index of given key
+    getIndex(key) {
+        let index = 0;
+        let currentNode = this.head;
+        while (currentNode !== null){
+            if (currentNode.key === key) {
+                return index;
+            }
+            index++;
+            currentNode = currentNode.nextNode;
+        }
+        return "Key not found!";
+    }
+
     // inserts a new node with the provided value at the given index.
     // if empty do nothing unless it's index of 0
     insertAt(key, value, index) {

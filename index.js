@@ -1,7 +1,5 @@
 import HashMap from "./hashMap.js";
 const test = new HashMap() // or HashMap() if using a factory
-console.log(test.hash("dog"));
-console.log(test.hash("lion"));
 test.set('apple', 'red')
 test.set('banana', 'yellow')
 test.set('carrot', 'orange')
@@ -14,8 +12,4 @@ test.set('ice cream', 'white')
 test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
-test.set('gorilla', 'black')
 console.log(test.buckets);
-console.log(test.capacity);
-console.log(test.get('dog'));
-console.log(test.get('lion'));

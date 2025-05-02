@@ -69,7 +69,7 @@ export default class HashMap {
     }
 
     // takes one argument as a key and returns the value that is assigned to the key. If a key is not found, return null
-    // Convert key into a hash, use hash as index to point to appropriate bucket, then lop through the linked list to find the key if the head doesn't point to null
+    // Convert key into a hash, use hash as index to point to appropriate bucket, then loop through the linked list to find the key if the head doesn't point to null
     get(key) {
        let index = this.hash(key);
        let bucket = this.buckets[index];
@@ -81,5 +81,42 @@ export default class HashMap {
         }
         return null;
        }
+    }
+
+    // takes a key as an argument and returns true or false based on whether or not the key is in the hash map
+    has(key) {
+        let index = this.hash(key);
+        if (index < 0 || index >= this.buckets.length) {
+            throw new Error("Trying to access index out of bounds");
+        }
+
+        let bucket = this.buckets[index];
+        if (bucket === null) return false;
+        let currentNode = bucket.head;
+        while (currentNode !== null) {
+            if (currentNode.key === key) return true;
+            currentNode = currentNode.nextNode;
+        }
+        return false;
+    }
+
+    // takes a key as an argument. if the given key is in the hash map, it should remove the entry with that key and return true
+    // if the key isn't in the hash map, it should return false;
+    remove(key) {
+        const keyTest = this.has(key);
+        if (keyTest === false) return false;
+
+        let index = this.hash(key);
+        if (index < 0 || index >= this.buckets.length) {
+            throw new Error("Trying to access index out of bounds");
+        }
+
+        let bucket = this.buckets[index];
+        let targetIndex = bucket.getIndex(key);
+        bucket.removeAt(targetIndex);
+
+        if (bucket.head === null) this.buckets[index] = null;
+        this.size--;
+        return true; 
     }
 }
