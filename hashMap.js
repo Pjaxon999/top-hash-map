@@ -124,4 +124,17 @@ export default class HashMap {
     length() {
         return this.size;
     }
+
+    // removes all entries in the hash map
+    clear() {
+        this.buckets = new Array(this.capacity).fill(null);
+        this.size = 0;
+    }
+
+    // returns an array containing all keys inside the hash map
+    keys() {
+        return this.buckets
+          .filter(bucket => bucket !== null)
+          .flatMap(bucket => bucket.getKeys());
+    }
 }

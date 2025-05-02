@@ -115,6 +115,17 @@ export default class LinkedList {
         return null;
     }
 
+    // returns all unique keys in the list
+    getKeys() {
+        let output = [];
+        let currentNode = this.head;
+        while (currentNode !== null) {
+            output.push(currentNode.key);
+            currentNode = currentNode.nextNode;
+        }
+        return output;
+    }
+
     // represents your LinkedList objects as strings, so you can print them out and preview them in the console. The format should be: ( value ) -> ( value ) -> ( value ) -> null
     toString() {
         if (this.head === null) return "Cannot make a string out of this list because it is empty!"
