@@ -67,4 +67,19 @@ export default class HashMap {
             this.resize();
         }
     }
+
+    // takes one argument as a key and returns the value that is assigned to the key. If a key is not found, return null
+    // Convert key into a hash, use hash as index to point to appropriate bucket, then lop through the linked list to find the key if the head doesn't point to null
+    get(key) {
+       let index = this.hash(key);
+       let bucket = this.buckets[index];
+       if (bucket !== null) {
+        let currentNode = bucket.head;
+        while (currentNode !== null) {
+            if (currentNode.key === key) return currentNode.value;
+            currentNode = currentNode.nextNode;
+        }
+        return null;
+       }
+    }
 }

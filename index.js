@@ -17,3 +17,5 @@ test.set('lion', 'golden')
 test.set('gorilla', 'black')
 console.log(test.buckets);
 console.log(test.capacity);
+console.log(test.get('dog'));
+console.log(test.get('lion'));
