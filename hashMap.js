@@ -134,7 +134,21 @@ export default class HashMap {
     // returns an array containing all keys inside the hash map
     keys() {
         return this.buckets
-          .filter(bucket => bucket !== null)
-          .flatMap(bucket => bucket.getKeys());
+            .filter(bucket => bucket !== null)
+            .flatMap(bucket => bucket.getKeys());
+    }
+
+    // returns an array containing all the values inside the hash map
+    values() {
+        return this.buckets
+            .filter(bucket => bucket !== null)
+            .flatMap(bucket => bucket.getValues());
+    }
+
+    //returns an array that contains each key, value pair
+    entries() {
+        return this.buckets
+            .filter(bucket => bucket !== null)
+            .flatMap(bucket => bucket.getPairs());
     }
 }
